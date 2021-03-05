@@ -76,7 +76,7 @@ type Priority = Natural
 
 
 -- |Add a `ToDo` in the chosen place in the `Queue`
-addToDo :: ToDo -> Maybe Priority -> Everything -> Everything
+addToDo :: [Char] -> Maybe Priority -> Everything -> Everything
 addToDo todo priority everything = undefined
 
 -- |Grooming action run before attempting to execute
@@ -88,3 +88,18 @@ startToDo everything = undefined
 -- Prioritize some items in Inbox
 -- Iterate over top n in Queue
 -- Let n = 10 cause we are humans
+initEverything :: Everything
+initEverything = Everything {
+  inbox = [],
+  queue  = [],
+  notes  = [],
+  habits = [],
+  async = [],
+  thrash = []
+}
+
+instance Eq Everything where
+  (==) _ _ = False
+
+-- read everything from database or file
+loadEverything = undefined
